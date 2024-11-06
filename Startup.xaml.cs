@@ -24,12 +24,22 @@ namespace TicTacToe
             InitializeComponent();
         }
 
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ChooseStart(object sender, MouseButtonEventArgs e)
         {
             
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            Image_StartO.Source = new BitmapImage(new Uri("Image/tic-tac-toe_x.png",UriKind.Relative));
+
+
+
         }
     }
 }

@@ -8,9 +8,10 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid ShowGridLines="True" Margin="10,0,0,92">
         <Grid.RowDefinitions>
-            <RowDefinition Height="119*"></RowDefinition>
-            <RowDefinition Height="105*"></RowDefinition>
-            <RowDefinition Height="106*"></RowDefinition>
+            <RowDefinition Height="125*"></RowDefinition>
+            <RowDefinition Height="125*"></RowDefinition>
+            <RowDefinition Height="125*"></RowDefinition>
+            <RowDefinition></RowDefinition>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
