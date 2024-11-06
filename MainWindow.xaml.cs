@@ -24,5 +24,10 @@ namespace TicTacToe
         {
             InitializeComponent();
         }
+
+        private void AddXorO(object sender, MouseButtonEventArgs e)
+        {
+            Image_StartO.Source = new BitmapImage(new Uri("Image/tic-tac-toe_x.png", UriKind.Relative));
+        }
     }
 }
