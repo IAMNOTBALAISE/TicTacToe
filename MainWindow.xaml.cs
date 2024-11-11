@@ -77,5 +77,10 @@ namespace TicTacToe
                 return false;
             }
         }
+
+        private void ChangeImg(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
