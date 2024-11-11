@@ -27,7 +27,7 @@ namespace TicTacToe
         private int YWinRatioCounter = 0;
 
         private PlayerEnum PlayerTurnActuator = PlayerEnum.X;
-        private bool TicTacToed = true;
+        private bool TicTacToed = false;
         private bool WinPlayerX = false;
         public MainWindow()
         {
@@ -56,7 +56,7 @@ namespace TicTacToe
             lblStack3.Content = $"Turn Player {PlayerTurnActuator}";
         }
 
-        public bool IsTicTacToe()
+        public void IsTicTacToe()
         {
 
             if (TicTacToed == true)
@@ -70,12 +70,9 @@ namespace TicTacToe
                 {
                     YGamesWonCounter++;
                 }
-                return true;
+               
             }
-            else
-            {
-                return false;
-            }
+        
         }
     }
 }
