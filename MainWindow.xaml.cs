@@ -20,14 +20,24 @@ namespace TicTacToe
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            ChangeStack();
         }
 
         private void AddXorO(object sender, MouseButtonEventArgs e)
         {
            
         }
+
+        public void ChangeStack()
+        {
+            lblStack1.Content = "Games Played:x Games Won: y";
+            lblStack2.Content = "Win Ratio: x%";
+            lblStack3.Content = "Turn Player X";
+        }
+
     }
 }
