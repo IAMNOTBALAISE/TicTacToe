@@ -75,8 +75,10 @@ namespace TicTacToe
         
         }
 
-        private void ChangeImg(object sender, MouseButtonEventArgs e)
+        private void SelectImg(object sender, MouseButtonEventArgs e)
         {
+
+
 
         }
     }

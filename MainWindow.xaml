@@ -46,7 +46,7 @@
 
 
 
-        <Image x:Name="blank1" Grid.Row="0" Grid.Column="0" Source="Image/Blank.jpg" Margin="10,24,13,24" MouseDown="ChangeImg" />
+        <Image x:Name="blank1" Grid.Row="0" Grid.Column="0" Source="Image/Blank.jpg" Margin="10,24,13,24" MouseDown="SelectImg" />
         <Image x:Name="blank2" Grid.Row="0" Grid.Column="1" Source="Image/Blank.jpg" Margin="17,19,16,20"/>
         <Image x:Name="blank3" Grid.Row="0" Grid.Column="2" Source="Image/Blank.jpg" Margin="15,23,5,18"  />
         <Image x:Name="blank4" Grid.Row="1" Grid.Column="0" Source="Image/Blank.jpg" Margin="6,27,13,17"   />
