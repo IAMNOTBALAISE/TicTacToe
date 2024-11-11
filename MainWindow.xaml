@@ -9,7 +9,7 @@
     <Grid ShowGridLines="False" Margin="0,0,0,0">
         <Grid.RowDefinitions >
 
-            <RowDefinition Height="125" MouseDown="AddXorO"></RowDefinition>
+            <RowDefinition x:Name="row1" Height="125" MouseDown="AddXorO"></RowDefinition>
             <RowDefinition Height="125"></RowDefinition>
             <RowDefinition Height="125"></RowDefinition>
             <RowDefinition Height="125"></RowDefinition>
@@ -33,7 +33,7 @@
             </ImageBrush>
 
         </Grid.Background>
-        
+
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
             <Label x:Name="lblStack1" Content=""></Label>
             <Label x:Name="lblStack2" Content=""></Label>
@@ -46,15 +46,15 @@
 
 
 
-        <Image x:Name="blank1" Grid.Row="0" Grid.Column="0" Source="Image/tic-tac-toe_o.png" Margin="0,2,10,5" />
-        <Image x:Name="blank2" Grid.Row="0" Grid.Column="1" Source="Image/tic-tac-toe_o.png" Margin="5,-5,5,5" />
-        <Image x:Name="blank3" Grid.Row="0" Grid.Column="2" Source="Image/tic-tac-toe_o.png" Margin="10,0,0,0" />
-        <Image x:Name="blank4" Grid.Row="1" Grid.Column="0" Source="Image/tic-tac-toe_o.png" Margin="10,9,18,10" />
-        <Image x:Name="blank5" Grid.Row="1" Grid.Column="1" Source="Image/tic-tac-toe_o.png" Margin="16,13,16,14" />
-        <Image x:Name="blank6" Grid.Row="1" Grid.Column="2" Source="Image/tic-tac-toe_o.png" Margin="15,8,5,8" />
-        <Image x:Name="blank7" Grid.Row="2" Grid.Column="0" Source="Image/tic-tac-toe_o.png" Margin="0,0,10,0" />
-        <Image x:Name="blank8" Grid.Row="2" Grid.Column="1" Source="Image/tic-tac-toe_o.png" Margin="5,0,5,0" />
-        <Image x:Name="blank9" Grid.Row="2" Grid.Column="2" Source="Image/tic-tac-toe_o.png" Margin="15,2,5,3" />
+        <Image x:Name="blank1" Grid.Row="0" Grid.Column="0" Source="Image/Blank.jpg" Margin="10,24,13,24" MouseDown="ChangeImg" />
+        <Image x:Name="blank2" Grid.Row="0" Grid.Column="1" Source="Image/Blank.jpg" Margin="17,19,16,20"/>
+        <Image x:Name="blank3" Grid.Row="0" Grid.Column="2" Source="Image/Blank.jpg" Margin="15,23,5,18"  />
+        <Image x:Name="blank4" Grid.Row="1" Grid.Column="0" Source="Image/Blank.jpg" Margin="6,27,13,17"   />
+        <Image x:Name="blank5" Grid.Row="1" Grid.Column="1" Source="Image/Blank.jpg" Margin="17,19,16,17"   />
+        <Image x:Name="blank6" Grid.Row="1" Grid.Column="2" Source="Image/Blank.jpg" Margin="15,16,10,15"  />
+        <Image x:Name="blank7" Grid.Row="2" Grid.Column="0" Source="Image/Blank.jpg" Margin="10,20,13,14" />
+        <Image x:Name="blank8" Grid.Row="2" Grid.Column="1" Source="Image/Blank.jpg" Margin="17,27,16,13"  />
+        <Image x:Name="blank9" Grid.Row="2" Grid.Column="2" Source="Image/Blank.jpg" Margin="15,17,10,22"  />
 
     </Grid>
 </Window>
