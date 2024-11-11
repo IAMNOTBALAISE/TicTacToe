@@ -37,5 +37,19 @@
 
 
 
+
+
+
+
+        <Image x:Name="blank1" Grid.Row="0" Grid.Column="0" Source="Image/tic-tac-toe_o.png" Margin="0,2,10,5" />
+        <Image x:Name="blank2" Grid.Row="0" Grid.Column="1" Source="Image/tic-tac-toe_o.png" Margin="5,-5,5,5" />
+        <Image x:Name="blank3" Grid.Row="0" Grid.Column="2" Source="Image/tic-tac-toe_o.png" Margin="10,0,0,0" />
+        <Image x:Name="blank4" Grid.Row="1" Grid.Column="0" Source="Image/tic-tac-toe_o.png" Margin="10,9,18,10" />
+        <Image x:Name="blank5" Grid.Row="1" Grid.Column="1" Source="Image/tic-tac-toe_o.png" Margin="16,13,16,14" />
+        <Image x:Name="blank6" Grid.Row="1" Grid.Column="2" Source="Image/tic-tac-toe_o.png" Margin="15,8,5,8" />
+        <Image x:Name="blank7" Grid.Row="2" Grid.Column="0" Source="Image/tic-tac-toe_o.png" Margin="0,0,10,0" />
+        <Image x:Name="blank8" Grid.Row="2" Grid.Column="1" Source="Image/tic-tac-toe_o.png" Margin="5,0,5,0" />
+        <Image x:Name="blank9" Grid.Row="2" Grid.Column="2" Source="Image/tic-tac-toe_o.png" Margin="15,2,5,3" />
+
     </Grid>
 </Window>
