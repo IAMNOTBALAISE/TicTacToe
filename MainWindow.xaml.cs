@@ -20,7 +20,10 @@ namespace TicTacToe
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private int GamesPlayedCounter = 0;
+        private int GamesWonCounter = 0;
+        private int WinRatioCounter = 0;
+        private PlayerEnum PlayerTurnActuator = PlayerEnum.X;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,10 +37,18 @@ namespace TicTacToe
 
         public void ChangeStack()
         {
-            lblStack1.Content = "Games Played:x Games Won: y";
-            lblStack2.Content = "Win Ratio: x%";
-            lblStack3.Content = "Turn Player X";
+            if (GamesPlayedCounter == 0) {
+                WinRatioCounter = 0;
+            }
+            else {
+                WinRatioCounter = (GamesWonCounter / GamesPlayedCounter) * 100;
+            }
+            lblStack1.Content = $"Games Played: {GamesPlayedCounter} Games Won: {GamesWonCounter}";
+            lblStack2.Content = $"Win Ratio: {WinRatioCounter}%";
+            lblStack3.Content = $"Turn Player {PlayerTurnActuator}";
         }
+
+
 
     }
 }
