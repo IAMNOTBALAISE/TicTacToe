@@ -39,7 +39,4 @@ namespace TicTacToe
             Image_StartO.Source = new BitmapImage(new Uri("Image/tic-tac-toe_x.png",UriKind.Relative));
 
 
-
-        }
-    }
 }
