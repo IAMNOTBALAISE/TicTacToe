@@ -27,7 +27,7 @@ namespace TicTacToe
         private int YWinRatioCounter = 0;
 
         private PlayerEnum PlayerTurnActuator = PlayerEnum.X;
-        private bool TicTacToed = false;
+        private bool TicTacToed = true;
         private bool WinPlayerX = false;
         public MainWindow()
         {
@@ -81,5 +81,10 @@ namespace TicTacToe
 
 
         }
+
+       
+
+
+
     }
 }
