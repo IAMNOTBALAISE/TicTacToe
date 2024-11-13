@@ -29,9 +29,17 @@ namespace TicTacToe
         private PlayerEnum PlayerTurnActuator = PlayerEnum.X;
         private bool TicTacToed = true;
         private bool WinPlayerX = false;
-        public MainWindow()
+
+        private string currentplayer;
+        private string playerImage;
+        public MainWindow(string imagePath, string playerType)
         {
             InitializeComponent();
+
+            currentplayer = playerType;
+
+            playerImage = imagePath;
+            
             IsTicTacToe();
             ChangeStack();
         }
@@ -78,7 +86,12 @@ namespace TicTacToe
         private void SelectImg(object sender, MouseButtonEventArgs e)
         {
 
+            Image clickedImage = (Image) sender;
 
+            if (clickedImage.Source.ToString().Contains("Blank.jpg"))
+            {
+               
+            }
 
         }
 
