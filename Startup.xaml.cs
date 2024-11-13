@@ -24,21 +24,30 @@ namespace TicTacToe
             InitializeComponent();
         }
 
-        private void ChooseX(object sender, MouseButtonEventArgs e)
+        public void ChoosePlayer(object sender, MouseButtonEventArgs e)
         {
 
-            MainWindow mainWindow = new MainWindow("Image/tic-tac-toe_x.png","X");
+            PlayerEnum startingPlayer;
+
+            if (sender == ImageX)
+            {
+                startingPlayer = PlayerEnum.X;
+            }else if (sender == ImageO)
+            {
+                startingPlayer= PlayerEnum.O;
+            }
+            else
+            {
+                return;
+            }
+
+            MainWindow mainWindow = new MainWindow(startingPlayer);
             mainWindow.Show();
             this.Close();
 
         }
 
-        private void ChooseO(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow("Image/tic_tac_toe_o.png","O");
-            mainWindow.Show();
-            this.Close();
-        }
+       
     }
        
 }

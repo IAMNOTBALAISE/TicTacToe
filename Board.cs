@@ -24,6 +24,19 @@ namespace TicTacToe
             }
         }
 
+        public bool IsCellEmpty(int row, int column)
+        {
+            return board[row, column] == PlayerEnum.NONE;
+        }
+
+        public void MakeMove(int row, int column,PlayerEnum player)
+        {
+            if(IsCellEmpty(row, column))
+            {
+                board[row, column] = player;
+            }
+        }
+
         public bool checkWin(out bool tictactoe, out int Xscore, out int Yscore)
         {
             tictactoe = false;

@@ -9,7 +9,7 @@
     <Grid ShowGridLines="False" Margin="0,0,0,0">
         <Grid.RowDefinitions >
 
-            <RowDefinition x:Name="row1" Height="125" MouseDown="AddXorO"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
             <RowDefinition Height="125"></RowDefinition>
             <RowDefinition Height="125"></RowDefinition>
             <RowDefinition Height="125"></RowDefinition>
@@ -46,15 +46,15 @@
 
 
 
-        <Image x:Name="blank1" Grid.Row="0" Grid.Column="0" Source="Image/Blank.jpg" Margin="10,24,13,24" MouseDown="SelectImg" />
-        <Image x:Name="blank2" Grid.Row="0" Grid.Column="1" Source="Image/Blank.jpg" Margin="17,19,16,20"/>
-        <Image x:Name="blank3" Grid.Row="0" Grid.Column="2" Source="Image/Blank.jpg" Margin="15,23,5,18"  />
-        <Image x:Name="blank4" Grid.Row="1" Grid.Column="0" Source="Image/Blank.jpg" Margin="6,27,13,17"   />
-        <Image x:Name="blank5" Grid.Row="1" Grid.Column="1" Source="Image/Blank.jpg" Margin="17,19,16,17"   />
-        <Image x:Name="blank6" Grid.Row="1" Grid.Column="2" Source="Image/Blank.jpg" Margin="15,16,10,15"  />
-        <Image x:Name="blank7" Grid.Row="2" Grid.Column="0" Source="Image/Blank.jpg" Margin="10,20,13,14" />
-        <Image x:Name="blank8" Grid.Row="2" Grid.Column="1" Source="Image/Blank.jpg" Margin="17,27,16,13"  />
-        <Image x:Name="blank9" Grid.Row="2" Grid.Column="2" Source="Image/Blank.jpg" Margin="15,17,10,22"  />
+        <Image  Grid.Row="0" Grid.Column="0" Source="Image/Blank.jpg"  Margin="10,24,13,24"  MouseDown="Image_MouseDown" />
+        <Image Grid.Row="0" Grid.Column="1" Source="Image/Blank.jpg"  Margin="17,19,16,20"  MouseDown="Image_MouseDown" />
+        <Image  Grid.Row="0" Grid.Column="2" Source="Image/Blank.jpg"  Margin="15,23,5,18" MouseDown="Image_MouseDown"  />
+        <Image Grid.Row="1" Grid.Column="0" Source="Image/Blank.jpg"  Margin="6,27,13,17"  MouseDown="Image_MouseDown"   />
+        <Image  Grid.Row="1" Grid.Column="1" Source="Image/Blank.jpg"  Margin="17,19,16,17"  MouseDown="Image_MouseDown"   />
+        <Image  Grid.Row="1" Grid.Column="2" Source="Image/Blank.jpg"  Margin="15,16,10,15"  MouseDown="Image_MouseDown"  />
+        <Image  Grid.Row="2" Grid.Column="0" Source="Image/Blank.jpg"  Margin="10,20,13,14"  MouseDown="Image_MouseDown" />
+        <Image Grid.Row="2" Grid.Column="1" Source="Image/Blank.jpg"  Margin="17,27,16,13"  MouseDown="Image_MouseDown"  />
+        <Image  Grid.Row="2" Grid.Column="2" Source="Image/Blank.jpg"  Margin="15,17,10,22"  MouseDown="Image_MouseDown"   />
 
     </Grid>
 </Window>

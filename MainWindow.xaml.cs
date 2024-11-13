@@ -25,29 +25,27 @@ namespace TicTacToe
         private int YGamesWonCounter = 0;  
         private int XWinRatioCounter = 0;
         private int YWinRatioCounter = 0;
-
-        private PlayerEnum PlayerTurnActuator = PlayerEnum.X;
         private bool TicTacToed = true;
         private bool WinPlayerX = false;
 
-        private string currentplayer;
-        private string playerImage;
-        public MainWindow(string imagePath, string playerType)
+        private PlayerEnum currentplayer;
+        private Board gameBoard;
+        private int turnCount;
+
+       
+        public MainWindow(PlayerEnum startingPlayer)
         {
             InitializeComponent();
 
-            currentplayer = playerType;
+            gameBoard = new Board();
+            currentplayer = startingPlayer;
 
-            playerImage = imagePath;
-            
+            lblStack3.Content = $"Turn Player {currentplayer}";
+
             IsTicTacToe();
             ChangeStack();
         }
 
-        private void AddXorO(object sender, MouseButtonEventArgs e)
-        {
-           
-        }
 
         public void ChangeStack()
         {
@@ -61,7 +59,7 @@ namespace TicTacToe
             }
             lblStack1.Content = $"Games Played: {GamesPlayedCounter} Games won by X: {XGamesWonCounter} Games won by Y: {YGamesWonCounter}";
             lblStack2.Content = $"X Win Ratio: {XWinRatioCounter}% Y Win Ratio: {YWinRatioCounter}%";
-            lblStack3.Content = $"Turn Player {PlayerTurnActuator}";
+            
         }
 
         public void IsTicTacToe()
@@ -83,21 +81,39 @@ namespace TicTacToe
         
         }
 
-        private void SelectImg(object sender, MouseButtonEventArgs e)
+       
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-            Image clickedImage = (Image) sender;
+            Image imageclicked = (Image)sender;
 
-            if (clickedImage.Source.ToString().Contains("Blank.jpg"))
-            {
-               
-            }
+            int row = Grid.GetRow(imageclicked);
+            int col = Grid.GetColumn(imageclicked);
+
+            if (gameBoard.IsCellEmpty(row,col))
+                if (currentplayer == PlayerEnum.X)
+                {
+                    imageclicked.Source = new BitmapImage(new Uri($"Image/tic-tac-toe_x.png", UriKind.Relative));
+                    gameBoard.MakeMove(row, col,PlayerEnum.X);
+                    currentplayer = PlayerEnum.O;
+                }
+                else if (currentplayer == PlayerEnum.O)
+                {
+
+
+                    imageclicked.Source = new BitmapImage(new Uri($"Image/tic-tac-toe_o.png", UriKind.Relative));
+                    gameBoard.MakeMove(row, col, PlayerEnum.O);
+                    currentplayer = PlayerEnum.X;
+                }
+
+            lblStack3.Content = $"Turn Player {currentplayer}";
+            ChangeStack();
 
         }
 
-       
+        }
 
-
-
+      
     }
-}
+
+    
