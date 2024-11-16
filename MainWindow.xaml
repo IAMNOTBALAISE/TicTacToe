@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TicTacToe"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="375">
-    <Grid ShowGridLines="False" Margin="0,0,0,0">
+    <Grid ShowGridLines="False" x:Name="gamegrid" Margin="0,0,0,0">
         <Grid.RowDefinitions >
 
             <RowDefinition Height="125"></RowDefinition>
@@ -34,7 +34,7 @@
 
         </Grid.Background>
 
-        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
             <Label x:Name="lblStack1" Content=""></Label>
             <Label x:Name="lblStack2" Content=""></Label>
             <Label x:Name="lblStack3" Content=""></Label>

@@ -10,8 +10,6 @@ namespace TicTacToe
     {
         PlayerEnum[,] board = new PlayerEnum[3, 3];
         PlayerEnum currentPlayer = PlayerEnum.X;
-        int x_score_cumulative = 0;
-        int y_score_cumulative = 0;
 
         public Board()
         {
@@ -29,171 +27,108 @@ namespace TicTacToe
             return board[row, column] == PlayerEnum.NONE;
         }
 
-        public void MakeMove(int row, int column,PlayerEnum player)
+        public void MakeMove(int row, int column, PlayerEnum player)
         {
-            if(IsCellEmpty(row, column))
+            if (IsCellEmpty(row, column))
             {
                 board[row, column] = player;
             }
         }
 
-        public bool checkWin(out bool tictactoe, out int Xscore, out int Yscore)
+        public void ResetEnumsOnBoard()
         {
-            tictactoe = false;
-
-            //checks for horizontal tictactoes
-            for (int i = 0; i < 3; i++)
+            for (int row = 0; row < 3; row++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int col = 0; col < 3; col++)
                 {
-
-                    if (board[i, j] == PlayerEnum.X && !(board[i, j] == PlayerEnum.O) || board[i, j] == PlayerEnum.O && !(board[i, j] == PlayerEnum.X))
-                    {
-                        if ((board[i + 1, j] == PlayerEnum.X && !(board[i + 1, j] == PlayerEnum.O)) || (board[i + 1, j] == PlayerEnum.O && !(board[i + 1, j] == PlayerEnum.X)))
-                        {
-                            if ((board[i + 2, j] == PlayerEnum.X && !(board[i + 2, j] == PlayerEnum.O)) || (board[i + 2, j] == PlayerEnum.O && !(board[i + 2, j] == PlayerEnum.X)))
-                            {
-                                tictactoe |= true;
-
-                                if (board[i, j] == PlayerEnum.X)
-                                {
-                                    x_score_cumulative++;
-                                }
-                                else if (board[i, j] == PlayerEnum.O)
-                                {
-                                    y_score_cumulative++;
-                                }
-                            }
-                        }
-                    }
-
-                    else if (board[i, j + 1] == PlayerEnum.X && !(board[i, j + 1] == PlayerEnum.O) || board[i, j + 1] == PlayerEnum.O && !(board[i, j + 1] == PlayerEnum.X))
-                    {
-                        if ((board[i + 1, j + 1] == PlayerEnum.X && !(board[i + 1, j + 1] == PlayerEnum.O)) || (board[i + 1, j + 1] == PlayerEnum.O && !(board[i + 1, j + 1] == PlayerEnum.X)))
-                        {
-                            if ((board[i + 2, j + 1] == PlayerEnum.X && !(board[i + 2, j + 1] == PlayerEnum.O)) || (board[i + 2, j + 1] == PlayerEnum.O && !(board[i + 2, j + 1] == PlayerEnum.X)))
-                            {
-                                tictactoe |= true;
-
-                                if (board[i, j+1] == PlayerEnum.X)
-                                {
-                                    x_score_cumulative++;
-                                }
-                                else if (board[i, j + 1] == PlayerEnum.O)
-                                {
-                                    y_score_cumulative++;
-                                }
-                            }
-                        }
-                    }
-
-
-                    else if (board[i, j + 2] == PlayerEnum.X && !(board[i, j + 2] == PlayerEnum.O) || board[i, j + 2] == PlayerEnum.O && !(board[i, j + 2] == PlayerEnum.X))
-                    {
-                        if ((board[i + 1, j + 2] == PlayerEnum.X && !(board[i + 1, j + 2] == PlayerEnum.O)) || (board[i + 1, j + 2] == PlayerEnum.O && !(board[i + 1, j + 2] == PlayerEnum.X)))
-                        {
-                            if ((board[i + 2, j + 2] == PlayerEnum.X && !(board[i + 2, j + 2] == PlayerEnum.O)) || (board[i + 2, j + 2] == PlayerEnum.O && !(board[i + 2, j + 2] == PlayerEnum.X)))
-                            {
-                                tictactoe |= true;
-
-                                if (board[i, j+2] == PlayerEnum.X)
-                                {
-                                    x_score_cumulative++;
-                                }
-                                else if (board[i, j+2] == PlayerEnum.O)
-                                {
-                                    y_score_cumulative++;
-                                }
-                            }
-                        }
-                    }
+                    board[row, col] = PlayerEnum.NONE;
                 }
             }
-
-            //checks for vertical tictactoes
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-
-                    if (board[i, j] == PlayerEnum.X && !(board[i, j] == PlayerEnum.O) || board[i, j] == PlayerEnum.O && !(board[i, j] == PlayerEnum.X))
-                    {
-                        if ((board[i, j + 1] == PlayerEnum.X && !(board[i, j + 1] == PlayerEnum.O)) || (board[i, j + 1] == PlayerEnum.O && !(board[i, j + 1] == PlayerEnum.X)))
-                        {
-                            if ((board[i, j + 2] == PlayerEnum.X && !(board[i, j + 2] == PlayerEnum.O)) || (board[i, j + 2] == PlayerEnum.O && !(board[i, j + 2] == PlayerEnum.X)))
-                            {
-                                tictactoe |= true;
-
-                                if (board[i, j] == PlayerEnum.X)
-                                {
-                                    x_score_cumulative++;
-                                }
-                                else if (board[i, j] == PlayerEnum.O)
-                                {
-                                    y_score_cumulative++;
-                                }
-
-                            }
-                        }
-                    }
-
-                    if (board[i + 1, j] == PlayerEnum.X && !(board[i + 1, j] == PlayerEnum.O) || board[i + 1, j] == PlayerEnum.O && !(board[i + 1, j] == PlayerEnum.X))
-                    {
-                        if ((board[i + 1, j + 1] == PlayerEnum.X && !(board[i + 1, j + 1] == PlayerEnum.O)) || (board[i + 1, j + 1] == PlayerEnum.O && !(board[i + 1, j + 1] == PlayerEnum.X)))
-                        {
-                            if ((board[i + 1, j + 2] == PlayerEnum.X && !(board[i + 1, j + 2] == PlayerEnum.O)) || (board[i + 1, j + 2] == PlayerEnum.O && !(board[i + 1, j + 2] == PlayerEnum.X)))
-                            {
-                                tictactoe |= true;
-
-                                if (board[i + 1, j] == PlayerEnum.X)
-                                {
-                                    x_score_cumulative++;
-                                }
-                                else if (board[i + 1, j] == PlayerEnum.O)
-                                {
-                                    y_score_cumulative++;
-                                }
-
-                            }
-                        }
-                    }
-
-                    if (board[i + 2, j] == PlayerEnum.X && !(board[i + 2, j] == PlayerEnum.O) || board[i + 2, j] == PlayerEnum.O && !(board[i + 2, j] == PlayerEnum.X))
-                    {
-                        if ((board[i + 2, j + 1] == PlayerEnum.X && !(board[i + 2, j + 1] == PlayerEnum.O)) || (board[i + 2, j + 1] == PlayerEnum.O && !(board[i + 2, j + 1] == PlayerEnum.X)))
-                        {
-                            if ((board[i + 2, j + 2] == PlayerEnum.X && !(board[i + 2, j + 2] == PlayerEnum.O)) || (board[i + 2, j + 2] == PlayerEnum.O && !(board[i + 2, j + 2] == PlayerEnum.X)))
-                            {
-                                tictactoe |= true;
-
-                                if (board[i + 2, j] == PlayerEnum.X)
-                                {
-                                    x_score_cumulative++;
-                                }
-                                else if (board[i + 2, j] == PlayerEnum.O)
-                                {
-                                    y_score_cumulative++;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-
-                }
-            }
-
-                    Xscore = x_score_cumulative;
-            Yscore = y_score_cumulative;
-            return false;
         }
 
+        public bool checkWin(out bool tictactoe, out int Xscore, out int Oscore, out PlayerEnum winner)
+        {
+            tictactoe = false;
+            winner = PlayerEnum.NONE;
+            Xscore = StateOfGame.XGamesWonCounter;
+            Oscore = StateOfGame.OGamesWonCounter;
+            // Checks the rows
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[i, 0] != PlayerEnum.NONE && board[i, 0] == board[i, 1] && board[i, 1] == board[i, 2])
+                {
+                    tictactoe = true;
+                    if (board[i, 0] == PlayerEnum.X)
+                    {
+                        winner = PlayerEnum.X;
+                        StateOfGame.XGamesWonCounter++;
+                    }
+                    else
+                    {
+                        StateOfGame.OGamesWonCounter++;
+                        winner = PlayerEnum.O;
+                    }
+                    break;
+                }
+            }
 
+            // Checks the columns
+            for (int j = 0; j < 3; j++)
+            {
+                if (board[0, j] != PlayerEnum.NONE && board[0, j] == board[1, j] && board[1, j] == board[2, j])
+                {
+                    tictactoe = true;
+                    if (board[0, j] == PlayerEnum.X)
+                    {
+                        winner = PlayerEnum.X;
+                        StateOfGame.XGamesWonCounter++;
+                    }
+                    else
+                    {
+                        StateOfGame.OGamesWonCounter++;
+                        winner = PlayerEnum.O;
+                    }
+                    break;
+                }
+            }
+
+            // Checks the diagonals
+            if (board[0, 0] != PlayerEnum.NONE && board[0, 0] == board[1, 1] && board[1, 1] == board[2, 2])
+            {
+                tictactoe = true;
+                if (board[0, 0] == PlayerEnum.X)
+                {
+                    winner = PlayerEnum.X;
+                    StateOfGame.XGamesWonCounter++;
+                }
+                else
+                {
+                    StateOfGame.OGamesWonCounter++;
+                    winner = PlayerEnum.O;
+                }
+            }
+            if (board[0, 2] != PlayerEnum.NONE && board[0, 2] == board[1, 1] && board[1, 1] == board[2, 0])
+            {
+                tictactoe = true;
+                if (board[0, 2] == PlayerEnum.X)
+                {
+                    winner = PlayerEnum.X;
+                    StateOfGame.XGamesWonCounter++;
+                }
+                else
+                {
+                    StateOfGame.OGamesWonCounter++;
+                    winner = PlayerEnum.O;
+                }
+
+
+                Xscore = StateOfGame.XGamesWonCounter++;
+                Oscore = StateOfGame.OGamesWonCounter++;
+
+
+            }
+
+            return tictactoe;
+        }
     }
 }

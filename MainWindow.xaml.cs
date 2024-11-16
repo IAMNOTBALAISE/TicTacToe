@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,68 +21,55 @@ namespace TicTacToe
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int GamesPlayedCounter = 0;
-        private int XGamesWonCounter = 0;
-        private int YGamesWonCounter = 0;  
+        
         private int XWinRatioCounter = 0;
-        private int YWinRatioCounter = 0;
-        private bool TicTacToed = true;
+        private int OWinRatioCounter = 0;
+       
         private bool WinPlayerX = false;
 
         private PlayerEnum currentplayer;
         private Board gameBoard;
-        private int turnCount;
-
        
+        
+
         public MainWindow(PlayerEnum startingPlayer)
         {
             InitializeComponent();
 
             gameBoard = new Board();
             currentplayer = startingPlayer;
+           
+            lblStack1.Content = $"Games Played: {StateOfGame.GamesPlayedCounter} Games won by X: {StateOfGame.XGamesWonCounter} Games won by Y: {StateOfGame.OGamesWonCounter}";
+            lblStack2.Content = $"X Win Ratio: {(StateOfGame.GamesPlayedCounter > 0 ? (int)((StateOfGame.XGamesWonCounter / (double)StateOfGame.GamesPlayedCounter) * 100) : 0)}% Y Win Ratio: {(StateOfGame.GamesPlayedCounter > 0 ? (int)((StateOfGame.OGamesWonCounter / (double)StateOfGame.GamesPlayedCounter) * 100) : 0)}%";
 
             lblStack3.Content = $"Turn Player {currentplayer}";
-
-            IsTicTacToe();
-            ChangeStack();
         }
-
 
         public void ChangeStack()
         {
-            if (GamesPlayedCounter == 0) {
+            if (StateOfGame.GamesPlayedCounter == 0) {
                 XWinRatioCounter = 0;
-                YWinRatioCounter = 0;
+                OWinRatioCounter = 0;
             }
             else {
-                XWinRatioCounter = (XGamesWonCounter / GamesPlayedCounter) * 100;
-                YWinRatioCounter = (YGamesWonCounter / GamesPlayedCounter) * 100;
+                XWinRatioCounter = (int)((StateOfGame.XGamesWonCounter / StateOfGame.GamesPlayedCounter) * 100);
+                OWinRatioCounter = (int)((StateOfGame.OGamesWonCounter / StateOfGame.GamesPlayedCounter) * 100);
             }
-            lblStack1.Content = $"Games Played: {GamesPlayedCounter} Games won by X: {XGamesWonCounter} Games won by Y: {YGamesWonCounter}";
-            lblStack2.Content = $"X Win Ratio: {XWinRatioCounter}% Y Win Ratio: {YWinRatioCounter}%";
+            lblStack1.Content = $"Games Played: {StateOfGame.GamesPlayedCounter} Games won by X: {StateOfGame.XGamesWonCounter} Games won by Y: {StateOfGame.OGamesWonCounter}";
+            lblStack2.Content = $"X Win Ratio: {XWinRatioCounter}% Y Win Ratio: {OWinRatioCounter}%";
             
         }
 
-        public void IsTicTacToe()
+        public void ResetGame()
         {
-
-            if (TicTacToed == true)
-            {
-                GamesPlayedCounter++;
-                if (WinPlayerX == true)
-                {
-                    XGamesWonCounter++;
-                }
-                else
-                {
-                    YGamesWonCounter++;
-                }
-               
-            }
-        
+            
+            Startup startup = new Startup();
+            startup.Show();
+            this.Close();
         }
-
        
+
+
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -99,15 +87,33 @@ namespace TicTacToe
                 }
                 else if (currentplayer == PlayerEnum.O)
                 {
-
-
                     imageclicked.Source = new BitmapImage(new Uri($"Image/tic-tac-toe_o.png", UriKind.Relative));
                     gameBoard.MakeMove(row, col, PlayerEnum.O);
                     currentplayer = PlayerEnum.X;
                 }
 
+            gameBoard.checkWin(out bool tictactoe, out int Xscore, out int Oscore, out PlayerEnum winner);
+            if (tictactoe == true) {
+
+                StateOfGame.GamesPlayedCounter++;
+                StateOfGame.XGamesWonCounter = Xscore;
+                StateOfGame.OGamesWonCounter = Oscore;
+                ChangeStack();
+             MessageBoxResult result = MessageBox.Show($"Player {winner} has won! Do you wish to play again?",
+                       "Game Over",MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes) {
+                  ResetGame();
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
+            
+         
+
+
             lblStack3.Content = $"Turn Player {currentplayer}";
-            ChangeStack();
 
         }
 
