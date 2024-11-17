@@ -47,13 +47,20 @@ namespace TicTacToe
 
         public void ChangeStack()
         {
-            if (StateOfGame.GamesPlayedCounter == 0) {
+            int gamesPlayed = StateOfGame.GamesPlayedCounter;
+            int xGamesWon = StateOfGame.XGamesWonCounter;
+            int oGamesWon = StateOfGame.OGamesWonCounter;
+
+            // Guard against division by zero or invalid state
+            if (gamesPlayed > 0)
+            {
+                XWinRatioCounter = (int)((xGamesWon / (double)gamesPlayed) * 100);
+                OWinRatioCounter = (int)((oGamesWon / (double)gamesPlayed) * 100);
+            }
+            else
+            {
                 XWinRatioCounter = 0;
                 OWinRatioCounter = 0;
-            }
-            else {
-                XWinRatioCounter = (int)((StateOfGame.XGamesWonCounter / StateOfGame.GamesPlayedCounter) * 100);
-                OWinRatioCounter = (int)((StateOfGame.OGamesWonCounter / StateOfGame.GamesPlayedCounter) * 100);
             }
             lblStack1.Content = $"Games Played: {StateOfGame.GamesPlayedCounter} Games won by X: {StateOfGame.XGamesWonCounter} Games won by Y: {StateOfGame.OGamesWonCounter}";
             lblStack2.Content = $"X Win Ratio: {XWinRatioCounter}% Y Win Ratio: {OWinRatioCounter}%";
@@ -62,10 +69,11 @@ namespace TicTacToe
 
         public void ResetGame()
         {
-            
+            gameBoard.ResetEnumsOnBoard();
             Startup startup = new Startup();
             startup.Show();
             this.Close();
+            ChangeStack();
         }
        
 
@@ -99,10 +107,6 @@ namespace TicTacToe
                 StateOfGame.GamesPlayedCounter++;
                 ChangeStack();
 
-
-
-
-
                 MessageBoxResult result = MessageBox.Show($"Player {winner} has won! Do you wish to play again?",
                           "Game Over", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
@@ -133,10 +137,7 @@ namespace TicTacToe
             }
 
 
-            lblStack3.Content = $"Turn Player {currentplayer}";
-            lblStack1.Content = $"Games Played: {StateOfGame.GamesPlayedCounter} Games won by X: {StateOfGame.XGamesWonCounter} Games won by Y: {StateOfGame.OGamesWonCounter}";
-            lblStack2.Content = $"X Win Ratio: {(StateOfGame.GamesPlayedCounter > 0 ? (int)((StateOfGame.XGamesWonCounter / (double)StateOfGame.GamesPlayedCounter) * 100) : 0)}% Y Win Ratio: {(StateOfGame.GamesPlayedCounter > 0 ? (int)((StateOfGame.OGamesWonCounter / (double)StateOfGame.GamesPlayedCounter) * 100) : 0)}%";
-
+          
         }
 
         }
