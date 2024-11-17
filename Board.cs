@@ -46,9 +46,10 @@ namespace TicTacToe
             }
         }
 
-        public bool checkWin(out bool tictactoe, out int Xscore, out int Oscore, out PlayerEnum winner)
+        public bool checkWin(out bool tictactoe,out bool isDraw, out int Xscore, out int Oscore, out PlayerEnum winner)
         {
             tictactoe = false;
+            isDraw = true;
             winner = PlayerEnum.NONE;
             Xscore = StateOfGame.XGamesWonCounter;
             Oscore = StateOfGame.OGamesWonCounter;
@@ -58,6 +59,7 @@ namespace TicTacToe
                 if (board[i, 0] != PlayerEnum.NONE && board[i, 0] == board[i, 1] && board[i, 1] == board[i, 2])
                 {
                     tictactoe = true;
+                    isDraw = false;
                     if (board[i, 0] == PlayerEnum.X)
                     {
                         winner = PlayerEnum.X;
@@ -78,6 +80,7 @@ namespace TicTacToe
                 if (board[0, j] != PlayerEnum.NONE && board[0, j] == board[1, j] && board[1, j] == board[2, j])
                 {
                     tictactoe = true;
+                    isDraw = false;
                     if (board[0, j] == PlayerEnum.X)
                     {
                         winner = PlayerEnum.X;
@@ -96,6 +99,7 @@ namespace TicTacToe
             if (board[0, 0] != PlayerEnum.NONE && board[0, 0] == board[1, 1] && board[1, 1] == board[2, 2])
             {
                 tictactoe = true;
+                 isDraw = false;
                 if (board[0, 0] == PlayerEnum.X)
                 {
                     winner = PlayerEnum.X;
@@ -128,7 +132,22 @@ namespace TicTacToe
 
             }
 
-            return tictactoe;
+            for(int i = 0; i < 3; i++)
+            {
+                for (int j = 0;j < 3; j++)
+                {
+                    if (board[i, j] == PlayerEnum.NONE)
+                    {
+                        isDraw = false;
+                        return false;
+                    }
+                }
+            }
+
+            return false;
+
+
+
         }
     }
 }

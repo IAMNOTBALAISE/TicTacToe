@@ -92,28 +92,52 @@ namespace TicTacToe
                     currentplayer = PlayerEnum.X;
                 }
 
-            gameBoard.checkWin(out bool tictactoe, out int Xscore, out int Oscore, out PlayerEnum winner);
-            if (tictactoe == true) {
+            gameBoard.checkWin(out bool tictactoe,out bool isDraw, out int Xscore, out int Oscore, out PlayerEnum winner);
+            if (tictactoe == true)
+            {
 
                 StateOfGame.GamesPlayedCounter++;
                 StateOfGame.XGamesWonCounter = Xscore;
                 StateOfGame.OGamesWonCounter = Oscore;
                 ChangeStack();
-             MessageBoxResult result = MessageBox.Show($"Player {winner} has won! Do you wish to play again?",
-                       "Game Over",MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes) {
-                  ResetGame();
+
+
+
+
+
+                MessageBoxResult result = MessageBox.Show($"Player {winner} has won! Do you wish to play again?",
+                          "Game Over", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    ResetGame();
                 }
                 else
                 {
                     Environment.Exit(0);
                 }
             }
-            
-         
+            else if (isDraw)
+            {
+                StateOfGame.GamesPlayedCounter++;
+                ChangeStack();
+                MessageBoxResult result = MessageBox.Show("The game is a draw! Do you wish to play again?", "Game Over", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    ResetGame();
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+
+
+            }
 
 
             lblStack3.Content = $"Turn Player {currentplayer}";
+            lblStack1.Content = $"Games Played: {StateOfGame.GamesPlayedCounter} Games won by X: {StateOfGame.XGamesWonCounter} Games won by Y: {StateOfGame.OGamesWonCounter}";
+            lblStack2.Content = $"X Win Ratio: {(StateOfGame.GamesPlayedCounter > 0 ? (int)((StateOfGame.XGamesWonCounter / (double)StateOfGame.GamesPlayedCounter) * 100) : 0)}% Y Win Ratio: {(StateOfGame.GamesPlayedCounter > 0 ? (int)((StateOfGame.OGamesWonCounter / (double)StateOfGame.GamesPlayedCounter) * 100) : 0)}%";
 
         }
 
