@@ -46,13 +46,12 @@ namespace TicTacToe
             }
         }
 
-        public bool checkWin(out bool tictactoe,out bool isDraw, out int Xscore, out int Oscore, out PlayerEnum winner)
+        public bool checkWin(out bool tictactoe,out bool isDraw,out PlayerEnum winner)
         {
             tictactoe = false;
             isDraw = true;
             winner = PlayerEnum.NONE;
-            Xscore = StateOfGame.XGamesWonCounter;
-            Oscore = StateOfGame.OGamesWonCounter;
+           
             // Checks the rows
             for (int i = 0; i < 3; i++)
             {
@@ -126,8 +125,6 @@ namespace TicTacToe
                 }
 
 
-                Xscore = StateOfGame.XGamesWonCounter++;
-                Oscore = StateOfGame.OGamesWonCounter++;
 
 
             }

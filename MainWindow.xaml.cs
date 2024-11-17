@@ -92,13 +92,11 @@ namespace TicTacToe
                     currentplayer = PlayerEnum.X;
                 }
 
-            gameBoard.checkWin(out bool tictactoe,out bool isDraw, out int Xscore, out int Oscore, out PlayerEnum winner);
+            gameBoard.checkWin(out bool tictactoe,out bool isDraw, out PlayerEnum winner);
             if (tictactoe == true)
             {
 
                 StateOfGame.GamesPlayedCounter++;
-                StateOfGame.XGamesWonCounter = Xscore;
-                StateOfGame.OGamesWonCounter = Oscore;
                 ChangeStack();
 
 
